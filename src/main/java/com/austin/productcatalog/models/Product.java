@@ -1,6 +1,7 @@
 package com.austin.productcatalog.models;
 
 import com.austin.productcatalog.dtos.CategoryDTO;
+import com.austin.productcatalog.dtos.FakeStoreProductDTO;
 import com.austin.productcatalog.dtos.ProductDTO;
 import lombok.Getter;
 import lombok.Setter;
@@ -29,5 +30,18 @@ public class Product extends BaseClass {
             productDTO.setCategory(categoryDTO);
         }
         return productDTO;
+    }
+
+    public FakeStoreProductDTO toFakestoreDTO() {
+        FakeStoreProductDTO fakeStoreProductDTO = new FakeStoreProductDTO();
+        fakeStoreProductDTO.setId((int) this.getId());
+        fakeStoreProductDTO.setTitle(this.name);
+        fakeStoreProductDTO.setDescription(this.description);
+        fakeStoreProductDTO.setPrice((float) this.price);
+        if (this.category != null) {
+            fakeStoreProductDTO.setCategory(this.category.getName());
+        }
+        fakeStoreProductDTO.setImage(this.imageUrl);
+        return fakeStoreProductDTO;
     }
 }
