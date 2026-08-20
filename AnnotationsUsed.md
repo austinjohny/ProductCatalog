@@ -18,3 +18,9 @@
 10. @RequestBody: Used to bind the HTTP request body to a method parameter in a controller class, allowing for the automatic deserialization of JSON or XML data into Java objects.
 11. @ControllerAdvice: Indicates that a class provides global exception handling and advice for controllers, allowing for centralized error handling and response customization.
 12. @ExceptionHandler: Used to define a method that handles specific exceptions thrown by controller methods, allowing for custom error handling and response generation.
+13. @MappedSuperclass: Indicates that a class is a mapped superclass in JPA, allowing it to be used as a base class for entity classes without being directly mapped to a database table.
+14. @Id: Indicates that a field is the primary key of an entity in JPA, allowing it to be used for uniquely identifying instances of the entity.
+15. @Entity: Indicates that a class is a JPA entity, allowing it to be mapped to a database table and managed by the JPA provider.
+16. @OneToMany: Indicates a one-to-many relationship between two entities in JPA, allowing for the mapping of a collection of related entities to a single entity.
+17. @ManyToOne: Indicates a many-to-one relationship between two entities in JPA, allowing for the mapping of a single entity to multiple related entities.
+18. @Repository: Indicates that a class is a Spring Data repository, allowing it to provide CRUD operations and query methods for a specific entity type.

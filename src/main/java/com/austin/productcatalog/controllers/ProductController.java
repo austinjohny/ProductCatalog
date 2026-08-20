@@ -31,7 +31,6 @@ public class ProductController {
 
     @GetMapping("/products")
     ResponseEntity<List<ProductDTO>> getAllProducts() {
-        List<ProductDTO> productDTOs = new ArrayList<>();
         List<Product> products = productServices.getAllProducts();
 
         if(products.isEmpty())
