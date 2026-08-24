@@ -3,6 +3,7 @@ package com.austin.productcatalog.controllers;
 import com.austin.productcatalog.dtos.ProductDTO;
 import com.austin.productcatalog.models.Product;
 import com.austin.productcatalog.services.IProductServices;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -25,7 +26,7 @@ public class ProductController {
     // we are using constructor injection here.
     // Spring will automatically inject the IProductServices implementation into this constructor.
     // Access modifier is immaterial for spring to inject the dependency,
-    private ProductController(IProductServices productServices) {
+    private ProductController(@Qualifier("productStorageService") IProductServices productServices) {
         this.productServices = productServices;
     }
 
@@ -71,4 +72,21 @@ public class ProductController {
         return new ResponseEntity<>(product.toProductDTO(), HttpStatus.CREATED);
     }
 
+    @PostMapping("/products")
+    ResponseEntity<ProductDTO> createProduct(@RequestBody ProductDTO productDTO) {
+        Product product = productServices.createProduct(productDTO.toProduct());
+        return new ResponseEntity<>(product.toProductDTO(), HttpStatus.CREATED);
+    }
+
+    @PostMapping("/products/bulk")
+    ResponseEntity<List<ProductDTO>> createProducts(@RequestBody List<ProductDTO> productDTOList) {
+        List<Product> products = productDTOList.stream()
+                .map(e -> e.toProduct())
+                .toList();
+        List<Product> createdProducts = productServices.addProducts(products);
+        List<ProductDTO> createdProductDTOs = createdProducts.stream()
+                .map(e -> e.toProductDTO())
+                .toList();
+        return new ResponseEntity<>(createdProductDTOs, HttpStatus.CREATED);
+    }
 }

@@ -24,3 +24,10 @@
 16. @OneToMany: Indicates a one-to-many relationship between two entities in JPA, allowing for the mapping of a collection of related entities to a single entity.
 17. @ManyToOne: Indicates a many-to-one relationship between two entities in JPA, allowing for the mapping of a single entity to multiple related entities.
 18. @Repository: Indicates that a class is a Spring Data repository, allowing it to provide CRUD operations and query methods for a specific entity type.
+19. @Column: Indicates that a field is mapped to a column in a database table in JPA, allowing for the customization of column properties such as name, length, and nullability.
+20. @ManyToOne(cascade = CascadeType.ALL): Indicates a many-to-one relationship between two entities in JPA, with cascading operations enabled, allowing for the automatic propagation of certain operations (such as persist, merge, remove) from the parent entity to the associated child entities.
+21. @Qualifier: Used to specify which bean should be injected when multiple beans of the same type are available, allowing for more precise dependency injection in Spring.
+22. @Query: Used to define a custom query in a Spring Data repository method, allowing for the execution of specific database queries using JPQL or native SQL.
+23. @SpringBootTest: Indicates that a test class should run with the Spring Boot test support, allowing for the loading of the application context and the execution of integration tests.
+24. @Test: Indicates that a method is a test method in JUnit, allowing for the execution of unit tests and the verification of expected behavior.
+25. @Transactional: Indicates that a method or class should be executed within a transactional context, allowing for the management of database transactions and ensuring data consistency.

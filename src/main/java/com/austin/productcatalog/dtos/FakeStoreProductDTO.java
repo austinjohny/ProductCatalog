@@ -22,7 +22,7 @@ public class FakeStoreProductDTO {
         product.setName(this.title);
         product.setDescription(this.description);
         product.setPrice(this.price);
-        product.setImageUrl(this.image);
+        product.setImage(this.image);
         Category categoryObj = new Category();
         categoryObj.setName(this.category);
         product.setCategory(categoryObj);

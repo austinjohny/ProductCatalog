@@ -10,7 +10,7 @@ import org.springframework.stereotype.Service;
 import java.util.Arrays;
 import java.util.List;
 
-@Service
+@Service("fakeStoreProductServices")
 public class FakeStoreProductServices implements IProductServices{
     private final FakeStoreClient fakeStoreClient;
 
@@ -91,5 +91,15 @@ public class FakeStoreProductServices implements IProductServices{
             return null;
 
         return fakeStoreProductDTO.toProduct();
+    }
+
+    @Override
+    public Product createProduct(Product product) {
+        return null;
+    }
+
+    @Override
+    public List<Product> addProducts(List<Product> products) {
+        return List.of();
     }
 }
