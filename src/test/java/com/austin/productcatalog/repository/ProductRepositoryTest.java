@@ -30,4 +30,13 @@ class ProductRepositoryTest {
         assertEquals(actualDescription, description);
     }
 
+    @Test
+    @Transactional
+    public void testFetchModes() {
+        List<Product> products = productRepository.findAll();
+        for (Product product : products) {
+            System.out.println("Product: " + product.getName() + ", Category: " + product.getCategory().getName());
+        }
+    }
+
 }

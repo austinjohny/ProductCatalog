@@ -18,7 +18,7 @@ public class Product extends BaseClass {
     private String image;
     // Without cascade when we save a product,
     // it will not automatically save the associated category.
-    @ManyToOne(cascade = CascadeType.ALL)
+    @ManyToOne
     private Category category;
 
     public ProductDTO toProductDTO(){

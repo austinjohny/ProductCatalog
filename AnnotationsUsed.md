@@ -31,3 +31,5 @@
 23. @SpringBootTest: Indicates that a test class should run with the Spring Boot test support, allowing for the loading of the application context and the execution of integration tests.
 24. @Test: Indicates that a method is a test method in JUnit, allowing for the execution of unit tests and the verification of expected behavior.
 25. @Transactional: Indicates that a method or class should be executed within a transactional context, allowing for the management of database transactions and ensuring data consistency.
+26. @RequestParam: Used to bind HTTP request parameters to method parameters in a controller class, allowing for the extraction of query parameters from the request URL.
+27. 

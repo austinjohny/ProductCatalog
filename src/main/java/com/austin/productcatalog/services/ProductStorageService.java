@@ -1,6 +1,8 @@
 package com.austin.productcatalog.services;
 
+import com.austin.productcatalog.models.Category;
 import com.austin.productcatalog.models.Product;
+import com.austin.productcatalog.repository.CategoryRepository;
 import com.austin.productcatalog.repository.ProductRepository;
 import org.springframework.stereotype.Service;
 
@@ -10,9 +12,11 @@ import java.util.List;
 @Service("productStorageService")
 public class ProductStorageService implements IProductServices{
     private final ProductRepository productRepository;
+    private final CategoryRepository categoryRepository;
 
-    public ProductStorageService(ProductRepository productRepository) {
+    public ProductStorageService(ProductRepository productRepository, CategoryRepository categoryRepository) {
         this.productRepository = productRepository;
+        this.categoryRepository = categoryRepository;
     }
     @Override
     public Product getProductById(Long id) {
@@ -40,6 +44,19 @@ public class ProductStorageService implements IProductServices{
 
     @Override
     public List<Product> addProducts(List<Product> products) {
+        for(Product product : products) {
+            Category category = product.getCategory();
+            if (category != null && category.getId() != 0) {
+                Category existingCategory = categoryRepository.findById(category.getId()).orElse(null);
+                if(existingCategory != null) {
+                    product.setCategory(existingCategory);
+                } else {
+                    // If the category does not exist, you can choose to either throw an exception or create a new category.
+                    // Here, we are creating a new category.
+                    product.setCategory(categoryRepository.save(category));
+                }
+            }
+        }
         return productRepository.saveAll(products);
     }
 }
