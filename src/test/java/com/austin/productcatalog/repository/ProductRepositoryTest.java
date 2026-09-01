@@ -1,5 +1,6 @@
 package com.austin.productcatalog.repository;
 
+import com.austin.productcatalog.models.Category;
 import com.austin.productcatalog.models.Product;
 import jakarta.transaction.Transactional;
 import org.junit.jupiter.api.Test;
@@ -14,6 +15,8 @@ import static org.junit.jupiter.api.Assertions.*;
 class ProductRepositoryTest {
     @Autowired
     private ProductRepository productRepository;
+    @Autowired
+    private CategoryRepository categoryRepository;
 
     @Test
     @Transactional
@@ -32,11 +35,11 @@ class ProductRepositoryTest {
 
     @Test
     @Transactional
-    public void testFetchModes() {
-        List<Product> products = productRepository.findAll();
-        for (Product product : products) {
-            System.out.println("Product: " + product.getName() + ", Category: " + product.getCategory().getName());
-        }
+    public void testFetchModes(){
+        Category category = categoryRepository.getById(1L);
+        System.out.println("Category: " + category.getName());
+        List<Product> products = category.getProducts();
+        System.out.println("Products in category: " + products.toString());
     }
 
 }

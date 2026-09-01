@@ -32,4 +32,11 @@
 24. @Test: Indicates that a method is a test method in JUnit, allowing for the execution of unit tests and the verification of expected behavior.
 25. @Transactional: Indicates that a method or class should be executed within a transactional context, allowing for the management of database transactions and ensuring data consistency.
 26. @RequestParam: Used to bind HTTP request parameters to method parameters in a controller class, allowing for the extraction of query parameters from the request URL.
-27. 
+27. @Fetch: Used to specify the fetching strategy for a relationship in JPA, allowing for the control of how related entities are loaded (eagerly or lazily) from the database.
+28. @OneToMany(mappedBy = "category", fetch = FetchType.LAZY): Indicates a one-to-many relationship between two entities in JPA, with the "mappedBy" attribute specifying the owning side of the relationship and the "fetch" attribute specifying that related entities should be loaded lazily from the database.
+    * FetchType.LAZY: Specifies that the related entities should be loaded lazily, meaning they will be fetched only when accessed, allowing for better performance and reduced memory usage.
+    * You can use FetchType.EAGER to specify that the related entities should be loaded eagerly, meaning they will be fetched immediately along with the parent entity.
+    * @Fetch(FetchMode.JOIN): Specifies that the related entities should be fetched using a SQL JOIN operation, allowing for the retrieval of related data in a single query.
+    * @Fetch(FetchMode.SELECT): Specifies that the related entities should be fetched using separate SQL SELECT statements, allowing for the retrieval of related data in multiple queries.
+    * @Fetch(FetchMode.SUBSELECT): Specifies that the related entities should be fetched using a SQL subselect query, allowing for the retrieval of related data in a single query with a subselect.
+    * @BatchSize(size = 10): Specifies the batch size for fetching related entities in JPA, allowing for the optimization of database queries by retrieving multiple related entities in a single batch.
