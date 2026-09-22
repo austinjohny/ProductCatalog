@@ -19,4 +19,10 @@ public abstract class BaseClass {
     // Maintaining state to do "soft delete",
     // i.e. instead of deleting the record from the database, we will just mark it as inactive
     private State state;
+
+    public BaseClass(){
+        createdAt = new Date();
+        modifiedAt = new Date();
+        state = State.ACTIVE;
+    }
 }
